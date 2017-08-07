@@ -1,0 +1,24 @@
+<div class="table">
+  <div class="row">
+    <div class="cell">Name</div>
+    <div class="cell">Club</div>
+    <div class="cell">Level</div>
+    <div class="cell"> </div>
+  </div>
+  <div class="row" *ngFor="let athlete of athletes">
+    <div class="cell">{{athlete.name}}</div>
+    <div class="cell">{{athlete.club}}</div>
+    <div class="cell">{{athlete.level}}</div>
+    <div class="cell">
+      <button>Edit</button>
+      <button (click)="deleteAthlete(athlete.id)">Delete</button>
+    </div>
+  </div>
+  <form class="row" (ngSubmit)="submitAthlete()">
+    <div class="cell"><input name="name" placeholder="Name" [(ngModel)]="athlete.name"></div>
+    <div class="cell"><input name="club" placeholder="Club" [(ngModel)]="athlete.club"></div>
+    <div class="cell"><input name="level" placeholder="Level" [(ngModel)]="athlete.level" type="number"></div>
+    <div class="cell"><button>Save</button></div>
+  </form>
+</div>
+<button>Add</button>
