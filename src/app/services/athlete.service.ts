@@ -26,6 +26,10 @@ export class AthleteService {
   create(athlete: Athlete): Observable<Athlete> {
     return this.api.post(API_URI, athlete).map(res => res.json());
   }
+
+  edit(athlete: Athlete) {
+    return this.api.put(API_URI + '/' + athlete.id, athlete).map(res => res.json());
+  }
 }
 
 export class Athlete {

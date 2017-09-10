@@ -8,7 +8,11 @@ import { AthleteService, Athlete} from '../../services/athlete.service';
 })
 export class AthleteListComponent implements OnInit {
   athletes: Athlete[];
-  athlete = new Athlete(); // new Athlete
+  athlete = new Athlete();
+  editID: number;
+  showAddForm = false;
+
+  // new Athlete
   constructor(private athleteService: AthleteService) { }
 
   ngOnInit() {
@@ -30,5 +34,10 @@ export class AthleteListComponent implements OnInit {
       this.athletes.push(athlete); // add new athlete to the list
       this.athlete = new Athlete; // clear the form
     });
+  }
+
+  editAthlete(athlete: Athlete) {
+    this.athleteService.edit(athlete).subscribe();  // We'll just assume it was successful for now
+    this.editID = 0;
   }
 }

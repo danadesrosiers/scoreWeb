@@ -6,19 +6,25 @@
     <div class="cell"> </div>
   </div>
   <div class="row" *ngFor="let athlete of athletes">
-    <div class="cell">{{athlete.name}}</div>
-    <div class="cell">{{athlete.club}}</div>
-    <div class="cell">{{athlete.level}}</div>
-    <div class="cell">
-      <button>Edit</button>
+    <div class="cell" *ngIf="editID != athlete.id">{{athlete.name}}</div>
+    <div class="cell" *ngIf="editID == athlete.id"><input name="name" placeholder="Name" [(ngModel)]="athlete.name"></div>
+    <div class="cell" *ngIf="editID != athlete.id">{{athlete.club}}</div>
+    <div class="cell" *ngIf="editID == athlete.id"><input name="club" placeholder="Club" [(ngModel)]="athlete.club"></div>
+    <div class="cell" *ngIf="editID != athlete.id">{{athlete.level}}</div>
+    <div class="cell" *ngIf="editID == athlete.id"><input name="level" placeholder="Level" [(ngModel)]="athlete.level" type="number"></div>
+    <div class="cell" *ngIf="editID != athlete.id">
+      <button (click)="editID = athlete.id">Edit</button>
       <button (click)="deleteAthlete(athlete.id)">Delete</button>
     </div>
+    <div class="cell" *ngIf="editID == athlete.id">
+      <button (click)="editAthlete(athlete)">Save</button>
+    </div>
   </div>
-  <form class="row" (ngSubmit)="submitAthlete()">
+  <form *ngIf="showAddForm" class="row" (ngSubmit)="submitAthlete()">
     <div class="cell"><input name="name" placeholder="Name" [(ngModel)]="athlete.name"></div>
     <div class="cell"><input name="club" placeholder="Club" [(ngModel)]="athlete.club"></div>
     <div class="cell"><input name="level" placeholder="Level" [(ngModel)]="athlete.level" type="number"></div>
     <div class="cell"><button>Save</button></div>
   </form>
 </div>
-<button>Add</button>
+<button (click)="showAddForm = !showAddForm">Add</button>
