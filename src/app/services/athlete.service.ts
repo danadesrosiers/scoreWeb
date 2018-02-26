@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 
@@ -8,14 +8,14 @@ const API_URI = 'http://localhost:8080/athlete';
 @Injectable()
 export class AthleteService {
 
-  constructor(public api: Http) { }
+  constructor(public api: HttpClient) { }
 
   getAthlete(id): Observable<Athlete> {
-    return this.api.get(API_URI + '/' + id).map(res => res.json());
+    return this.api.get<Athlete>(API_URI + '/' + id);
   }
 
   queryAthletes(): Observable<Athlete[]> {
-    return this.api.get(API_URI).map(res => res.json());
+    return this.api.get<Athlete[]>(API_URI);
   }
 
   deleteAthlete(id: number) {
@@ -24,11 +24,11 @@ export class AthleteService {
   }
 
   create(athlete: Athlete): Observable<Athlete> {
-    return this.api.post(API_URI, athlete).map(res => res.json());
+    return this.api.post<Athlete>(API_URI, athlete);
   }
 
   edit(athlete: Athlete) {
-    return this.api.put(API_URI + '/' + athlete.id, athlete).map(res => res.json());
+    return this.api.put<Athlete>(API_URI + '/' + athlete.id, athlete);
   }
 }
 
