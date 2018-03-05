@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AthleteService, Athlete} from '../../services/athlete.service';
+import { AthleteService, Athlete} from '../../services/athlete/athlete.service';
 
 @Component({
   selector: 'app-athlete-list',
@@ -16,14 +16,13 @@ export class AthleteListComponent implements OnInit {
   constructor(private athleteService: AthleteService) { }
 
   ngOnInit() {
-    this.athleteService.queryAthletes().subscribe(athletes => {
-      console.log(athletes);
+    this.athleteService.query().subscribe(athletes => {
       this.athletes = athletes;
     });
   }
 
   deleteAthlete(id) {
-    this.athleteService.deleteAthlete(id).subscribe(() => {
+    this.athleteService.delete(id).subscribe(() => {
       this.athletes = this.athletes.filter( athlete => athlete.id !== id );
     });
   }
