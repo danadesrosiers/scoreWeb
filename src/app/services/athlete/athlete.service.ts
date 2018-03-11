@@ -7,7 +7,6 @@ export class AthleteService extends BaseService<Athlete> {
 }
 
 export class Athlete extends Resource {
-  id: number;
   name: string;
   club: string;
   level: number;

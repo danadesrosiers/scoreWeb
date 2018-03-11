@@ -5,20 +5,23 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AthleteListComponent } from './components/athlete-list/athlete-list.component';
+import { CoachListComponent } from './components/coach-list/coach-list.component';
 
-import {AthleteService} from './services/athlete.service';
+import { AthleteService } from './services/athlete/athlete.service';
+import { CoachService } from './services/coach/coach.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AthleteListComponent
+    AthleteListComponent,
+    CoachListComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule
   ],
-  providers: [AthleteService],
+  providers: [AthleteService, CoachService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
