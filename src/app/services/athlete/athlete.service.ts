@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {BaseService, Resource} from '../base.service';
+import {RestService, Resource} from '../rest.service';
 
 @Injectable()
-export class AthleteService extends BaseService<Athlete> {
+export class AthleteService extends RestService<Athlete> {
   API_URI = 'http://localhost:8080/athlete';
 }
 

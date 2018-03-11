@@ -1,8 +1,7 @@
-///<reference path="../../../../node_modules/@angular/core/src/metadata/directives.d.ts"/>
-import {Resource} from '../../services/base.service';
+import {Resource} from '../../services/rest.service';
 import {OnInit} from '@angular/core';
 
-export abstract class BaseListComponent<T extends Resource> implements OnInit {
+export abstract class ListComponent<T extends Resource> implements OnInit {
   list: T[];
   item = {} as T;
   editID: number;

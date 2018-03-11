@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Athlete, AthleteService} from '../../services/athlete/athlete.service';
-import { BaseListComponent } from '../base-list/base-list.component';
+import { ListComponent } from '../list/list.component';
 
 @Component({
   selector: 'app-athlete-list',
-  templateUrl: '../base-list/base-list.component.html',
-  styleUrls: ['../base-list/base-list.component.css']
+  templateUrl: '../list/list.component.html',
+  styleUrls: ['../list/list.component.css']
 })
-export class AthleteListComponent extends BaseListComponent<Athlete> {
+export class AthleteListComponent extends ListComponent<Athlete> {
   constructor(protected service: AthleteService) {
     super(service);
   }

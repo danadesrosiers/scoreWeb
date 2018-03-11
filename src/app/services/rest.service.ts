@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
-export abstract class BaseService<T extends Resource> {
+export abstract class RestService<T extends Resource> {
   abstract API_URI: string;
 
   constructor(protected api: HttpClient) { }
