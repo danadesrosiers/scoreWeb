@@ -17,7 +17,7 @@ export abstract class RestService<T extends Resource> {
   }
 
   create(resource: T): Observable<T> {
-    return this.api.post<T>(this.API_URI + '/' + resource.id, resource);
+    return this.api.post<T>(this.API_URI, resource);
   }
 
   edit(resource: T): Observable<T> {

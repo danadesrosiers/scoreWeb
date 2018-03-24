@@ -3,9 +3,9 @@
     <div class="cell" *ngFor="let title of getHeader()">{{title}}</div>
   </div>
   <div class="row" *ngFor="let item of list">
-    <div class="cell" *ngFor="let property of getProperties()">
+    <div class="cell" *ngFor="let property of getProperties(); let i = index">
       <div *ngIf="editID != item.id">{{item[property]}}</div>
-      <div *ngIf="editID == item.id"><input name="property" placeholder="Name" [(ngModel)]="item[property]"></div>
+      <div *ngIf="editID == item.id"><input name="{{property}}" placeholder="{{getHeader()[i]}}" [(ngModel)]="item[property]"></div>
     </div>
     <div class="cell" *ngIf="editID != item.id">
       <button (click)="editID = item.id">Edit</button>
@@ -16,9 +16,9 @@
     </div>
   </div>
   <form *ngIf="showAddForm" class="row" (ngSubmit)="submit()">
-    <div class="cell"><input name="name" placeholder="Name" [(ngModel)]="item.name"></div>
-    <div class="cell"><input name="club" placeholder="Club" [(ngModel)]="item.club"></div>
-    <div class="cell"><input name="level" placeholder="Level" [(ngModel)]="item.level" type="number"></div>
+    <div class="cell" *ngFor="let property of getProperties(); let i = index">
+      <input name="{{property}}" placeholder="{{getHeader()[i]}}" [(ngModel)]="newItem[property]">
+    </div>
     <div class="cell"><button>Save</button></div>
   </form>
 </div>

@@ -3,7 +3,7 @@ import {OnInit} from '@angular/core';
 
 export abstract class ListComponent<T extends Resource> implements OnInit {
   list: T[];
-  item = {} as T;
+  newItem = {} as T;
   editID: number;
   showAddForm = false;
 
@@ -25,9 +25,9 @@ export abstract class ListComponent<T extends Resource> implements OnInit {
   }
 
   submit() {
-    this.service.create(this.item).subscribe(item => {
+    this.service.create(this.newItem).subscribe(item => {
       this.list.push(item); // add new item to the list
-      this.item = {} as T; // clear the form
+      this.newItem = {} as T; // clear the form
     });
   }
 
