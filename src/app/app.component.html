@@ -1,10 +1,18 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div id="main">
-  <h1>
-    Welcome to {{title}}
-  </h1>
-  <app-athlete-list></app-athlete-list>
-  <br><br>
-  <app-coach-list></app-coach-list>
+  <div id="header">
+    <h1>
+      Welcome to {{title}}
+    </h1>
+  </div>
+  <div id="left-menu">
+    <ul>
+      <li><a (click)="activeTab = 'athletes'">Athletes</a></li>
+      <li><a (click)="activeTab = 'coaches'">Coaches</a></li>
+    </ul>
+  </div>
+  <div id="content">
+    <app-athlete-list *ngIf="activeTab == 'athletes'"></app-athlete-list>
+    <app-coach-list *ngIf="activeTab == 'coaches'"></app-coach-list>
+  </div>
 </div>
 

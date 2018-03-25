@@ -18,7 +18,7 @@ export abstract class ListComponent<T extends Resource> implements OnInit {
     });
   }
 
-  delete(id) {
+  delete(id: number) {
     this.service.delete(id).subscribe(() => {
       this.list = this.list.filter( item => item.id !== id );
     });
